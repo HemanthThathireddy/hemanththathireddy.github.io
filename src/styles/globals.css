@@ -1,0 +1,285 @@
+/* portfolio/src/styles/globals.css */
+
+/* ─────────────────────────────────────────────
+   Font imports — Inter + Fraunces (serif)
+   Loaded with display=swap to avoid FOIT.
+   Preconnect/preload should also live in index.html.
+   ───────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   Design tokens as CSS custom properties.
+   Mirrored from tailwind.config.ts so non-Tailwind
+   surfaces (Three.js, D3, inline SVG) can read them.
+   ───────────────────────────────────────────── */
+:root {
+  --bg: #0a0a0a;
+  --bg-deep: #050505;
+  --surface-1: #111111;
+  --surface-2: #1a1a1a;
+  --surface-3: #222222;
+  --border-subtle: #222222;
+  --border: #2a2a2a;
+  --border-strong: #383838;
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --text-tertiary: #5a5a5a;
+  --accent: #6c63ff;
+  --accent-hover: #8077ff;
+  --teal: #0fffc1;
+  --amber: #ffaa2c;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snappy: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --cursor-size: 8px;
+  --cursor-ring: 36px;
+
+  color-scheme: dark;
+}
+
+/* ─────────────────────────────────────────────
+   Base layer — resets + sensible defaults
+   ───────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    background: var(--bg);
+  }
+
+  /* Disable smooth scroll for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-primary);
+    background: var(--bg);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Pull-quote serif tuning */
+  .font-serif {
+    font-feature-settings: 'liga', 'dlig', 'kern';
+    font-optical-sizing: auto;
+  }
+
+  /* Headings inherit family but tighten tracking */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: rgba(108, 99, 255, 0.35);
+    color: var(--text-primary);
+  }
+
+  /* Scrollbar — minimal, dark */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-3);
+    border-radius: 999px;
+    border: 2px solid var(--bg);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--border-strong);
+  }
+
+  /* Focus rings — visible only for keyboard nav */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Component layer — small reusable surfaces
+   ───────────────────────────────────────────── */
+@layer components {
+  .glass {
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .surface-card {
+    background: linear-gradient(180deg, var(--surface-1), var(--surface-2));
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+  }
+
+  .label-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #fff 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Custom cursor surfaces — behavior is JS-driven */
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 9999px;
+    will-change: transform;
+    mix-blend-mode: difference;
+  }
+  .cursor-dot {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    background: #ffffff;
+    /* center on the cursor point — transform is owned by motion values */
+    margin-left: calc(var(--cursor-size) / -2);
+    margin-top: calc(var(--cursor-size) / -2);
+  }
+  .cursor-ring {
+    width: var(--cursor-ring);
+    height: var(--cursor-ring);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    margin-left: calc(var(--cursor-ring) / -2);
+    margin-top: calc(var(--cursor-ring) / -2);
+  }
+
+  /* Hide native cursor only on fine-pointer devices */
+  @media (hover: hover) and (pointer: fine) {
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+      cursor: none !important;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Utility layer — composables Tailwind doesn't
+   express cleanly (perspective, clip, mask).
+   ───────────────────────────────────────────── */
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .mask-fade-y {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* GPU-accelerated layer hints for elements we know we'll animate */
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Reduced-motion: kill non-essential motion.
+   We deliberately override Tailwind animations
+   too so .animate-* utilities degrade safely.
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
