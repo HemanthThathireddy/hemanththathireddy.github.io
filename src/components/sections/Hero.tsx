@@ -275,7 +275,7 @@ export function Hero() {
           className="mt-8 max-w-[52ch] text-body-lg text-text-secondary md:mt-10"
         >
           I design and ship resilient distributed systems and AI-orchestration 
-          pipelines — from the data-center floor to the browser. Currently focused 
+          pipelines from the data-center floor to the browser. Currently focused 
           on LLM infrastructure and the developer-facing platforms 
           that make AI integration possible.
         </motion.p>
