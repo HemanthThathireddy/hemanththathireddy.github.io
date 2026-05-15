@@ -9,6 +9,7 @@ import {
   Linkedin,
   Mail,
   type LucideIcon,
+  FileText,
 } from 'lucide-react';
 import { easing, fadeUpItem, staggerContainer } from '../../lib/animations';
 import { SectionHeading } from '../primitives/SectionHeading';
@@ -23,7 +24,7 @@ const CONTACT = {
   email: 'hemantht255@gmail.com',
   linkedin: 'https://www.linkedin.com/in/hemanth-thathireddy-656238165/',
   github: 'https://github.com/hemanththathireddy',
-  resume: '<a href="/resume.pdf" target="_blank">Résumé</a>',
+  resume: '/resume.pdf',
 } as const;
 
 /* ─────────────────────────────────────────────
@@ -293,8 +294,8 @@ export function Contact() {
             <SocialLink
               href={CONTACT.resume}
               label="Résumé"
-              Icon={Mail}
-              external={false}
+              Icon={FileText}
+              external={true}
             />
           </motion.div>
         </motion.div>
