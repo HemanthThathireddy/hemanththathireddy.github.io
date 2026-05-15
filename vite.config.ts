@@ -7,6 +7,7 @@ import react from '@vitejs/plugin-react';
    HeroScene already creates a chunk; this just ensures the dep boundaries
    are clean across the whole graph. */
 export default defineConfig({
+  base: '/',
   plugins: [react()],
   build: {
     target: 'es2020',
