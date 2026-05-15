@@ -267,7 +267,7 @@ export function Contact() {
             I&rsquo;m always up for a conversation about distributed systems,
             developer experience, or the boring infrastructure that makes the
             interesting stuff possible. The fastest way to reach me is email
-            — copy below, or pick a side door.
+            copy below, or pick a side door.
           </motion.p>
 
           <motion.div

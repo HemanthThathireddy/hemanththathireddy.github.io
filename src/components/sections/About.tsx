@@ -24,12 +24,12 @@ interface Stat {
 }
 
 const STATS: ReadonlyArray<Stat> = [
-  { target: 3, label: 'Years', sublabel: 'building software', suffix: '+' },
-  { target: 10, label: 'Projects', sublabel: 'shipped to production', suffix: '+' },
+  { target: 2, label: 'Years', sublabel: 'building software', suffix: '+' },
+  { target: 3, label: 'Projects', sublabel: 'shipped to production', suffix: '+' },
   { target: 5, label: 'Stacks', sublabel: 'across cloud and web' },
 ];
 
-type TagCategory = 'frontend' | 'backend' | 'data' | 'cloud' | 'systems';
+type TagCategory = 'frontend' | 'backend' | 'data' | 'cloud' | 'systems' |'AiLlmNlp'|'AiDevelopmentTools';
 
 interface Tag {
   label: string;
@@ -37,22 +37,50 @@ interface Tag {
 }
 
 const TAGS: ReadonlyArray<Tag> = [
+  { label: 'Java', category: 'backend' },
+  { label: 'Python', category: 'backend' },
+  { label: 'Go', category: 'backend' },
+  { label: 'REST APIs', category: 'backend' },
+  { label: 'Authentication (JWT/OAuth2)', category: 'backend' },
+  { label: 'Distributed Systems', category: 'backend' },
+  { label: 'Event-Driven Architectures', category: 'backend' },
+  { label: 'WebSocket Communication', category: 'backend' },
+  { label: 'Serverless Architectures', category: 'backend' },
+  { label: 'Spring Boot', category: 'backend' },
   { label: 'TypeScript', category: 'frontend' },
   { label: 'React', category: 'frontend' },
+  { label: 'Vite', category: 'frontend' },
+  { label: 'Responsive UI', category: 'frontend' },
+  { label: 'Accessibility', category: 'frontend' },
+  { label: 'State Management', category: 'frontend' },
   { label: 'Next.js', category: 'frontend' },
   { label: 'Tailwind', category: 'frontend' },
-  { label: 'Node.js', category: 'backend' },
-  { label: 'Python', category: 'backend' },
-  { label: 'Java', category: 'backend' },
-  { label: 'Spring Boot', category: 'backend' },
   { label: 'PostgreSQL', category: 'data' },
   { label: 'Redis', category: 'data' },
+  { label: 'DynamoDB', category: 'data' },
+  { label: 'Hibernate/JPA', category: 'data' },
+  { label: 'SQLAlchemy', category: 'data' },
   { label: 'AWS', category: 'cloud' },
+  { label: 'EC2', category: 'cloud' },
+  { label: 'S3', category: 'cloud' },
+  { label: 'RDS', category: 'cloud' },
+  { label: 'IAM', category: 'cloud' },
+  { label: 'Cloud-Native Services', category: 'cloud' },
+  { label: 'Distributed Cloud Services', category: 'cloud' },
   { label: 'Docker', category: 'cloud' },
   { label: 'Kubernetes', category: 'cloud' },
   { label: 'Terraform', category: 'cloud' },
   { label: 'Linux', category: 'systems' },
   { label: 'Git', category: 'systems' },
+  { label: 'OpenAI API Integration', category: 'AiLlmNlp' },
+  { label: 'NLP Pipelines', category: 'AiLlmNlp' },
+  { label: 'AI-Assisted Data Extraction', category: 'AiLlmNlp' },
+  { label: 'LLM-Powered Product Features', category: 'AiLlmNlp' },
+  { label: 'AI-Assisted Workflows', category: 'AiLlmNlp' },
+  { label: 'Claude Code', category: 'AiDevelopmentTools' },
+  { label: 'Cursor', category: 'AiDevelopmentTools' },
+  { label: 'Google AI Studio', category: 'AiDevelopmentTools' },
+  { label: 'Kiro', category: 'AiDevelopmentTools' },
 ];
 
 const CATEGORY_DOT: Record<TagCategory, string> = {
@@ -61,6 +89,8 @@ const CATEGORY_DOT: Record<TagCategory, string> = {
   data: 'bg-text-tertiary',
   cloud: 'bg-teal',
   systems: 'bg-text-secondary',
+  AiLlmNlp: 'bg-amber',
+  AiDevelopmentTools: 'bg-accent',
 };
 
 /* Spring-physics variant for tag entry. Defined here (not in animations.ts)
@@ -256,7 +286,7 @@ function PullQuote() {
         variants={fadeUpItem}
         className="relative font-serif text-pull italic leading-snug text-text-primary text-balance"
       >
-        Good infrastructure is the kind you forget exists — until it
+        Good infrastructure is the kind you forget exists, until it
         doesn&rsquo;t, and then it&rsquo;s the only thing that matters.
       </motion.blockquote>
       <motion.figcaption
@@ -295,7 +325,7 @@ function BioBlock() {
             Hemanth Thathireddy
           </div>
           <div className="font-mono text-micro uppercase tracking-widest text-text-secondary">
-            Engineer · Chicago, IL
+            Software Engineer · Chicago, IL
           </div>
         </div>
       </motion.div>
@@ -305,24 +335,32 @@ function BioBlock() {
         className="space-y-5 text-body leading-relaxed text-text-secondary [&>p>strong]:font-medium [&>p>strong]:text-text-primary"
       >
         <p>
-          I&rsquo;m a full-stack engineer based in Chicago. My work moves
-          between two altitudes — I started in enterprise data centers at{' '}
-          <strong>TCS</strong>, racking and routing the boring metal that
-          everything else depends on, and I&rsquo;ve spent the last few years
-          climbing the stack into build pipelines, internal platforms, and
-          the applications people actually see.
+        I&rsquo;m a backend-focused software engineer based in Chicago, building scalable 
+        distributed systems, cloud-native applications, and AI-powered workflows. 
+        My experience spans across backend engineering, real-time systems, 
+        and modern full-stack development — from developing high-volume financial 
+        transaction platforms at <strong>Tata Consultancy Services</strong> to building event-driven 
+        AWS services, real-time WebSocket platforms, and AI-assisted backend pipelines 
+        at <strong>Tek Labs Inc</strong> and <strong>Genx AI Solutions Corp</strong>.
         </p>
         <p>
-          I hold a Master&rsquo;s in Computer Science from{' '}
-          <strong>Illinois Institute of Technology</strong>, and have shipped
-          production code at <strong>TCS</strong>, <strong>IIT Chicago</strong>,{' '}
-          <strong>Tek Labs</strong>, and <strong>Genx&nbsp;AI</strong> — touching
-          everything from BGP routing tables to React render trees.
+        I hold a Master&rsquo;s in Computer Science from <strong>Illinois Institute of Technology</strong>, 
+        where I worked on scalable collaboration systems, cloud infrastructure, 
+        and production-grade CI/CD workflows while mentoring student developers in 
+        Agile engineering environments.
         </p>
         <p>
-          What I care about most is the seam where reliability meets
-          developer experience: the difference between a system that works
-          and a system people enjoy working on.
+        My work sits at the intersection of <strong>distributed systems, AWS cloud engineering, 
+        and AI-powered product development</strong>, building systems that are not only scalable 
+        and reliable, but also efficient for teams and intuitive for users. I enjoy solving 
+        complex backend problems involving <strong>asynchronous workflows, event-driven architectures, 
+        real-time communication, and high-volume data processing</strong>, while continuously improving 
+        performance, operational reliability, and developer experience.
+        </p>
+        <p>
+        I&rsquo;m especially interested in the engineering challenges behind scalable platforms: 
+        designing systems that handle growth gracefully, simplify complexity, and make both 
+        customers and developers more productive.
         </p>
       </motion.div>
     </motion.div>
@@ -345,7 +383,7 @@ export function About() {
           number="01"
           eyebrow="About"
           title="A profile, in three altitudes."
-          description="From the data-center floor to the browser — what I do, where I&rsquo;ve done it, and the tools I reach for first."
+          description="From the data-center floor to the browser. What I do, where I&rsquo;ve done it, and the tools I reach for first."
         />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">

@@ -274,10 +274,10 @@ export function Hero() {
           transition={{ duration: 0.7, ease: easing.spring, delay: 1.1 }}
           className="mt-8 max-w-[52ch] text-body-lg text-text-secondary md:mt-10"
         >
-          I design and ship resilient distributed systems — from the data-center
-          floor to the browser. Currently focused on developer-facing platforms,
-          internal tooling, and the boring infrastructure that makes the
-          interesting stuff possible.
+          I design and ship resilient distributed systems and AI-orchestration 
+          pipelines — from the data-center floor to the browser. Currently focused 
+          on LLM infrastructure and the developer-facing platforms 
+          that make AI integration possible.
         </motion.p>
 
         {/* CTA */}

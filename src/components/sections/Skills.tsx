@@ -30,7 +30,7 @@ const PROFICIENCY_RING: Record<1 | 2 | 3, number> = {
   1: 2,
 };
 
-const QUADRANT_PADDING_DEG = 9;
+const QUADRANT_PADDING_DEG = 6;
 
 /* ─────────────────────────────────────────────
    Domain types + data
@@ -80,8 +80,8 @@ const CATEGORIES: ReadonlyArray<Category> = [
     id: 'frontend',
     label: 'Frontend',
     color: 'accent',
-    bisector: 315, // top-left
-    arc: [270, 360],
+    bisector: 324, // top-left
+    arc: [288, 360],
     skills: [
       { name: 'TypeScript', proficiency: 3 },
       { name: 'React', proficiency: 3 },
@@ -93,8 +93,8 @@ const CATEGORIES: ReadonlyArray<Category> = [
     id: 'backend',
     label: 'Backend',
     color: 'amber',
-    bisector: 45, // top-right
-    arc: [0, 90],
+    bisector: 36, // top-right
+    arc: [0, 72],
     skills: [
       { name: 'Python', proficiency: 3 },
       { name: 'Java', proficiency: 2 },
@@ -106,8 +106,8 @@ const CATEGORIES: ReadonlyArray<Category> = [
     id: 'cloud',
     label: 'Cloud',
     color: 'teal',
-    bisector: 135, // bottom-right
-    arc: [90, 180],
+    bisector: 108, // bottom-right
+    arc: [72, 144],
     skills: [
       { name: 'AWS', proficiency: 3 },
       { name: 'Docker', proficiency: 3 },
@@ -120,12 +120,26 @@ const CATEGORIES: ReadonlyArray<Category> = [
     label: 'DevOps',
     color: 'secondary',
     bisector: 225, // bottom-left
-    arc: [180, 270],
+    arc: [144, 216],
     skills: [
       { name: 'Linux', proficiency: 3 },
       { name: 'Bash', proficiency: 3 },
       { name: 'Git', proficiency: 3 },
       { name: 'CI/CD', proficiency: 2 },
+    ],
+  },
+  {
+    id: 'ai',
+    label: 'AI & LLM',
+    color: 'teal',
+    bisector: 252,
+    arc: [216, 288],
+    skills: [
+      { name: 'OpenAI API Integration', proficiency: 3 },
+      { name: 'LLM-Powered Product Features', proficiency: 3 },
+      { name: 'Claude Code', proficiency: 2 },
+      { name: 'Cursor', proficiency: 2 },
+      { name: 'AI-Assisted Data Extraction', proficiency: 2 },
     ],
   },
 ];
@@ -530,15 +544,15 @@ export function Skills() {
           description="Proficiency shown by distance from center — inner is expert, outer is exploratory. Hover the radar or the legend to highlight."
         />
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7 lg:col-start-1">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-center">
+          <div className="lg:col-span-6 lg:col-start-1">
             <SkillRadar
               hoveredCategoryId={hoveredCategoryId}
               hoveredSkillName={hoveredSkillName}
               onHoverSkill={setHoveredSkillName}
             />
           </div>
-          <div className="lg:col-span-5 lg:col-start-8">
+          <div className="lg:col-span-6 lg:col-start-8">
             <SkillsLegend
               hoveredCategoryId={hoveredCategoryId}
               hoveredSkillName={hoveredSkillName}
