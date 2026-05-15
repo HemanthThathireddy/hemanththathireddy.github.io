@@ -20,10 +20,10 @@ import { cn } from '../../lib/cn';
    ───────────────────────────────────────────── */
 
 const CONTACT = {
-  email: 'hemanth@example.com',
-  linkedin: 'https://linkedin.com/in/hemanth-thathireddy',
-  github: 'https://github.com/hemanth-thathireddy',
-  resume: '/resume.pdf',
+  email: 'hemantht255@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/hemanth-thathireddy-656238165/',
+  github: 'https://github.com/hemanththathireddy',
+  resume: '<a href="/resume.pdf" target="_blank">Résumé</a>',
 } as const;
 
 /* ─────────────────────────────────────────────
