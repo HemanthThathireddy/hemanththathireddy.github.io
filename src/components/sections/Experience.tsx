@@ -119,7 +119,7 @@ const ROLES: ReadonlyArray<RoleEntry> = [
     id: 'tcs',
     company: 'Tata Consultancy Services',
     title: 'Full Stack Developer',
-    dates: 'Feb 2022 — Dec 2022',
+    dates: 'Feb 2020 — Dec 2022',
     location: 'India',
     type: 'infra',/*'1M+ Daily Transactions | Kafka/Kinesis | Distributed Systems | Java Microservices | Fraud Detection Pipelines',*/
     logoText: 'TCS',
